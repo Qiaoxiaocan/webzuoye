@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul, li{
+    list-style: none;
+}
+.totation{
+    width: 1200px;
+    height: 382px;
+    margin: 10px auto;
+    position: relative;
+    overflow: hidden;
+}
+.currents{
+    width: 8400px;
+    position: absolute;
+    left: -1200px;
+}
+.current{
+    width: 1200px;
+    overflow: hidden;
+    float: left;
+}
+.totation>span{
+    display: block;
+    width: 30px;
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    top: 175px;
+    line-height: 50px;
+    background: rgb(255, 0, 0);
+    font-size: 30px;
+    position: absolute;
+    opacity: 0;
+}
+#leftButton{
+    left: 30px;
+}
+#rightButton{
+    right: 30px;
+}
+.number{
+    position: absolute;
+    left: 500px;
+    bottom: 20px;
+}
+.number>li{
+    float: left;
+    width: 20px;
+    height: 20px;
+    background: #ccc;
+    cursor: pointer;
+    margin: 0 10px;
+    border-radius: 50%;
+}
+.number .active{
+    background: red;
+    color: white;
+}
+#notice{
+    height: 20px;
+    width: auto;
+    background-color: #ccc;
+    position: relative;
+}
+#notice>img{
+    margin-left: 300px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    position: relative;
+    display: inline-block;
+    height: 17px;
+    width: 17px;
+}
+.notice1{
+    height: 20px;
+    width: 850px;
+    overflow: hidden;
+    background-color: #ccc;
+    display: inline-block;
+    position: relative;
+    color: #FF0000;
+}
+.notice11{
+    height: 20px;
+    width: 400px;
+    position: relative;
+    font-size: 14px;
+    right: -500px;
+}
