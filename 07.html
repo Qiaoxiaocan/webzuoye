@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <title>07</title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            ul li{
+                list-style: none;
+            }
+            #all{
+                position: absolute;
+                top: 50px;
+                left: 50%;
+                width: 700px;
+                height: 500px;
+                margin-left: -350px;
+            }
+            img{
+                width: 700px;
+                height: 500px;
+            }
+            #imgList>li{
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            #spot{
+                position: relative;
+                left: 50px;
+                bottom: -470px;
+                float: left;
+            }
+            #spot>li{
+                width: 10px;
+                height: 10px;
+                border-radius: 10px;
+                display: inline-block;
+                background-color: rgba(130, 130, 130, 0.5);
+                
+            }
+            #spot>li.active{
+                background-color: rgb(255, 255, 255, 1);
+                border: solid 3px rgba(130, 130, 130, 0.5);
+            }
+            #all:hover>#spot{
+                cursor: pointer;
+            }
+            #leftBtn{
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 25px;
+                height: 25px;
+                background-color: rgba(130, 130, 130, 0.2);
+                color: white;
+                text-align: center;
+                line-height: 23px;
+                font-size: 20px;
+                border-radius: 25px;
+            }
+            #all:hover>#leftBtn{
+                display: block;
+                cursor: pointer;
+            }
+            #leftBtn:hover{
+                background-color: rgba(130, 130, 130, 0.7);
+            }
+            #rightBtn{
+                position: absolute;
+                top: 50%;
+                right: 0;
+                width: 25px;
+                height: 25px;
+                background-color: rgba(130, 130, 130, 0.2);
+                color: white;
+                text-align: center;
+                line-height: 23px;
+                font-size: 20px;
+                border-radius: 25px;
+            }
+            #all:hover>#rightBtn{
+                display: block;
+                cursor: pointer;
+            }
+            #rightBtn:hover{
+                background-color: rgba(130, 130, 130, 0.7);
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "all">
+            <ul id="imgList"> 
+                <li>
+                    <a href="#"><img src="07img/1.jpg" ></a>
+                </li>
+                <li>
+                    <a href="#"><img src="07img/2.jpg" ></a>
+                </li>
+                <li>
+                    <a href="#"><img src="07img/3.jpg" ></a>
+                </li>
+                <li>
+                    <a href="#"><img src="07img/4.jpg" ></a>
+                </li>
+                <li>
+                    <a href="#"><img src="07img/5.jpg" ></a>
+                </li>
+                <li>
+                    <a href="#"><img src="07img/6.jpg" ></a>
+                </li>
+                <li>
+                    <a href="#"><img src="07img/7.jpg" ></a>
+                </li>
+                <li>
+                    <a href="#"><img src="07img/8.jpg" ></a>
+                </li>
+            </ul>
+            <ul id="spot">
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+            </ul>
+            <div id="leftBtn">
+                &lt;
+            </div>
+            <div id="rightBtn">
+                &gt;
+            </div>
+        </div>
+    </body>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#imgList li").eq(0).show();
+            $("#spot li").eq(0).addClass("active");
+
+            var i = 0;
+            var size = $("#imgList li").size();
+            
+            function move(){
+                i ++;
+                if(i == size){
+                    i = 0;
+                }
+                $("#spot li").eq(i).addClass("active").siblings().removeClass("active");
+                $("#imgList li").eq(i).fadeIn(500).siblings().fadeOut(500);
+            }
+            function move1(){
+                i --;
+                if(i == -1){
+                    i = size - 1;
+                }
+                $("#spot li").eq(i).addClass("active").siblings().removeClass("active");
+                $("#imgList li").eq(i).fadeIn(500).siblings().fadeOut(500);
+            }
+
+            var time = setInterval(move, 1500);
+            $("#all").hover(
+                function(){
+                    clearInterval(time);
+                },
+                function(){
+                    time = setInterval(move, 1500);
+                }
+            )
+
+            $("#leftBtn").click(function(){
+                move1();
+            })
+            $("#rightBtn").click(function(){
+                move();
+            })
+
+            $("#spot li").mouseover(function(){
+                var index = $(this).index();
+                $(this).addClass("active").siblings().removeClass("active");
+                i = index;
+                $("#imgList li").eq(index).stop().fadeIn(500).siblings().stop().fadeOut(500);
+            })
+        })
+    </script>
+</html>
